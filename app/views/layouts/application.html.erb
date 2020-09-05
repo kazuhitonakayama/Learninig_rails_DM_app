@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DMApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="logoarea"></div>
+      <div class="listarea">
+        <ul class="listbox">
+          <%= link_to 'ログアウト',destroy_user_session_path,method: :delete %>
+        </ul>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
