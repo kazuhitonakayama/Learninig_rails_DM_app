@@ -1,6 +1,8 @@
 <h1>DMサンプル</h1>
 <h2>User一覧ページ</h2>
 
+<%= link_to '通知一覧',notifications_path %>
+
 <% if user_signed_in? %>
     <h2><%= current_user.email %>でログインしています</h2> 
     <%= link_to "SignOut", destroy_user_session_path, :method => :delete, class:"signOutButton" %>
