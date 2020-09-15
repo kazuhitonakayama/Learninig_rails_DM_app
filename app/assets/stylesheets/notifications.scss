@@ -1,3 +1,17 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.dm-content {
+    background-color:#00B900;
+    color: #fff;
+    font-weight: bold;
+    width: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-left: 20px;
+}

@@ -17,8 +17,10 @@
             <%= visitor.name %>さん
         <% end %>
         <% if notification.action=='dm' %>
-        があなた(<%= visited.name %>さん)にDMを送りました
+        からDMがきました
         <% end %>
+        <% @content = Message.find(notification.message_id) %>
+        <p class="dm-content"><%= @content.body %></p>
         <%= link_to '既読にする',notification_path(notification.id),method: :put %>
     </div>
 <% end %>
