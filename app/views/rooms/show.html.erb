@@ -1,36 +1,33 @@
-<div class="user-in">
-<% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name %></a></strong></h3>
-<% end %>
-<p>2人のDMです！</p>
-</div>
-
-<div class="dmMain">
-    <% @messages.each do |m| %>
-        <strong><%= m.body %></strong>
-        <small><%= m.user.name %>さん</small><hr>
+<div class="roomShow">
+    <div class="user-in">
+    <% @entries.each do |e| %>
+        <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.name %></a></strong></h3>
     <% end %>
+    <p>2人のDMです！</p>
+    </div>
 
-    <%= form_for @message do |f| %>
-    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "送信する" %>
-    <% end %>
+    <div class="dmMain">
+        <% @messages.each do |m| %>
+            <% if m.user_id == current_user.id %>
+                <div class="current_user">
+                    <strong class="current_user"><%= m.body %></strong>
+                    <small class="current_user"><%= m.user.name %>さん</small>
+                </div>
+            <% else %>
+                <div class="visited_user">
+                    <strong class="visited_user"><%= m.body %></strong>
+                    <small class="visited_user"><%= m.user.name %>さん</small>
+                </div>
+            <% end %>
+        <% end %>
+
+        <%= form_for @message do |f| %>
+        <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <%= f.submit "送信する" %>
+        <% end %>
+    </div>
+
+    <%= link_to "ユーザー一覧に戻る", users_path %>
 </div>
-
-<%= link_to "ユーザー一覧に戻る", users_path %>
-
-
-<style>
-.user-in {
-    text-align:center;
-    border:1px solid darkgray;
-    background-color:gainsboro;
-}
-.dmMain {
-    padding:30px;
-    border:1px solid darkgray;
-    background-color:gainsboro;
-}
-</style>

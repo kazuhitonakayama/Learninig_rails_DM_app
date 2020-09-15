@@ -1,10 +1,24 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div>
-    <%= link_to user_path(visitor) do %>
-        <%= visitor.name %>さん
+
+<% @user=User.find(visitor.id) %>
+<% @currentUserEntry=Entry.where(user_id: current_user.id) %>
+<% @userEntry=Entry.where(user_id: @user.id) %>
+<% @currentUserEntry.each do |cu| %>
+    <% @userEntry.each do |u| %>
+        <% if cu.room_id == u.room_id then %>
+            <% @roomId = cu.room_id %>
+        <% end %>
     <% end %>
-    <% if notification.action=='dm' %>
-    があなたにDMを送りました
-    <% end %>
-</div>
+<% end %>
+<% if notification.checked == false %>
+    <div>
+        <%= link_to room_path(@roomId) do %>
+            <%= visitor.name %>さん
+        <% end %>
+        <% if notification.action=='dm' %>
+        があなた(<%= visited.name %>さん)にDMを送りました
+        <% end %>
+        <%= link_to '既読にする',notification_path(notification.id),method: :put %>
+    </div>
+<% end %>

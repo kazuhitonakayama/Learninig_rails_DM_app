@@ -1,3 +1,38 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.roomShow {
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: aquamarine;
+}
+.current_user {
+    color: red;
+    text-align: right;
+    background-color: #fff;
+    width: fit-content;
+    margin: 10px 0 0 auto;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.visited_user {
+    color: #fff;
+    margin: 10px;
+    background-color: brown;
+    text-align: left;
+    width: fit-content;
+    margin: 10px auto 0 0;
+    border-radius:30px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    -ms-border-radius:30px;
+    -o-border-radius:30px;
+    box-sizing: border-box;
+    padding: 10px;
+}
